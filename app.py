@@ -98,25 +98,19 @@ def parse_megatrack_text(text: str):
     }
 
 def append_to_google_sheets(parsed_data, titulo, capitulo, duracion, fecha_emision):
-    """
-    Se conecta a Google Sheets usando gspread y añade una nueva fila.
-    La fila contiene, por ejemplo, los siguientes campos:
-      A: Número (Número de capítulo)
-      B: Intérprete/Artista (Track Title)
-      C: Título de la Composición (Título del programa ingresado)
-      D: Duración
-      E: Uso (vacío)
-      F: Compositor (lista de compositores)
-      G: Descripción (ISWC, ISRC, Fecha de emisión)
-      H: Casa Editora (lista de publishers)
-    """
-    # Configurar autenticación con la cuenta de servicio
     scope = ["https://www.googleapis.com/auth/spreadsheets"]
+    
     import os, json
-service_account_info = json.loads(os.environ["SERVICE_ACCOUNT_JSON"])
-creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
-
+    from google.oauth2.service_account import Credentials
+    import gspread
+    
+    service_account_info = json.loads(os.environ["SERVICE_ACCOUNT_JSON"])
+    creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
     gc = gspread.authorize(creds)
+    
+    # Resto del código con la misma indentación
+    # ...
+
 
     # Abrir el documento de Google Sheets y la pestaña
     sh = gc.open_by_key(SPREADSHEET_ID)
