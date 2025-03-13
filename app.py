@@ -103,6 +103,7 @@ def append_to_google_sheets(parsed_data, titulo, capitulo, duracion, fecha_emisi
     import os, json
     from google.oauth2.service_account import Credentials
     import gspread
+    scope = ["https://www.googleapis.com/auth/spreadsheets"]
     
     service_account_info = json.loads(os.environ["SERVICE_ACCOUNT_JSON"])
     creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
