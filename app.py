@@ -112,7 +112,10 @@ def append_to_google_sheets(parsed_data, titulo, capitulo, duracion, fecha_emisi
     """
     # Configurar autenticación con la cuenta de servicio
     scope = ["https://www.googleapis.com/auth/spreadsheets"]
-    creds = Credentials.from_service_account_file("service_account.json", scopes=scope)
+    import os, json
+service_account_info = json.loads(os.environ["SERVICE_ACCOUNT_JSON"])
+creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
+
     gc = gspread.authorize(creds)
 
     # Abrir el documento de Google Sheets y la pestaña
