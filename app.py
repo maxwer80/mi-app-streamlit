@@ -97,15 +97,15 @@ def parse_megatrack_text(text: str):
         "publishers": publishers
     }
 
-def append_to_google_sheets(parsed_data, titulo, capitulo, duracion, fecha_emision):
-    scope = ["https://www.googleapis.com/auth/spreadsheets"]
-    
-    import os, json
+ddef append_to_google_sheets(parsed_data, titulo, capitulo, duracion, fecha_emision):
+    import json
     from google.oauth2.service_account import Credentials
     import gspread
+    
     scope = ["https://www.googleapis.com/auth/spreadsheets"]
     
-    service_account_info = json.loads(os.environ["SERVICE_ACCOUNT_JSON"])
+    
+    service_account_info = st.secrets["gcp_service_account"]
     creds = Credentials.from_service_account_info(service_account_info, scopes=scope)
     gc = gspread.authorize(creds)
     
