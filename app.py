@@ -6,7 +6,7 @@ from google.oauth2.service_account import Credentials
 # ---- CONFIGURACIÓN ----
 # Reemplaza el siguiente valor por el ID de tu Google Sheets.
 # El ID es la parte de la URL de tu hoja entre "/d/" y "/edit"
-SPREADSHEET_ID = "Cue Sheets"
+SPREADSHEET_ID = "1M9KItV4TA05hZ8vD9RfF3MlzSj2O9ijI_1hmnmgX3Zk"
 # Nombre de la pestaña donde se guardarán los datos (asegúrate que coincida con tu hoja)
 SHEET_NAME = "Cue Sheets"
 
